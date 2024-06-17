@@ -5,6 +5,41 @@
     <title>WonderLandUkraineBot</title>
 </head>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 200;
+        color: var(--tg-theme-text-color);
+        background: var(--tg-theme-bg-color);
+    }
+
+    #main {
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    h1 {
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    img {
+        width: 120px;
+        margin: 30px auto;
+    }
+
+    p {
+        width: 350px;
+        margin: 0 auto;
+    }
+
     button {
         border: 0;
         border-radius: 5px;
@@ -25,12 +60,13 @@
 </style>
 
 <body>
-    <div class="Head_text">
+    <div id="main">
       <h1>Welcome to WonderLandStore!</h1>
-      <h2>Вы прибыли на сайт о вселенной Гарри Поттера, где вы сможете узнать полностью историю этого мира, историю персонажей и многое другое!</h2>
-        <img name="Snow Cat" src=Кошка.jpg alt="Tom and Harry" width="15%" height="40%">
+      <p>Вы прибыли на сайт о вселенной Гарри Поттера, где вы сможете узнать полностью историю этого мира, историю персонажей и многое другое!</p>
+        <img name="Snow Cat" src=Кошка.jpg>
         <button id="buy">Buy</button>
     </div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 </body>
 </html>
