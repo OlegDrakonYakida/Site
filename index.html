@@ -91,6 +91,10 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         let tg = window.Telegram.WebApp;
+        
+        // Инициализация WebApp
+        tg.ready(); 
+        
         tg.expand(); // Пытается развернуть Web App для проверки
 
         let buy1 = document.getElementById("buy1");
