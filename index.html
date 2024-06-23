@@ -51,15 +51,11 @@
 
         img {
             border: none;
-            border-radius: 10px;
+            border-radius: 25% 10%;
             width: 160px;
             margin: 30px auto;
             opacity: 0.7;
-        }
-
-        img[name="Home"] {
-            border-radius: 25% 10%;
-        }
+        }        
 
         button {
             border: 0;
@@ -113,6 +109,7 @@
         });
 
         buy2.addEventListener("click", () => {
+           tg.sendData(JSON.stringify({ action: "buy", item: "Gingerbread house" }));
            tg.close();
         });
 
