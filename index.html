@@ -31,13 +31,23 @@
     }
 
     img {
+        border: none;
+        border-radius: 10px;
         width: 160px;
         margin: 30px auto;
+        opacity: 0.7;
     }
 
     p {
         width: 350px;
         margin: 0 auto;
+    }
+
+    .grid-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px; /* Расстояние между столбцами */
+        margin-top: 30px;
     }
 
     .content {
@@ -70,20 +80,37 @@
     <div id="main">
       <h1>Welcome to WonderLandStore!</h1>
       <p>Using our web application, you can view our products!</p>
-      <div class="content">
-        <img name="Snow Cat" src=Кошка.jpg>
-        <button id="buy">Buy</button>
-      </div>
+        <div class="grid-container">
+            <div class="content">
+                <img name="Snow Cat" src=Кошка.jpg>
+                <button id="buy">Buy</button>
+            </div>
+            <div>
+                <img name="Home" src="Обложка.jpg">
+                <button id="buy2">Buy</button>
+            </div>
+        </div>
     </div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         let tg = window.Telegram.WebApp;
-        let buy = document.getElementById("buy");
+        tg.expand(); // Пытается развернуть Web App для проверки
 
-        buy.addEventListener("click", () => {
-           tg.close() 
+        let buy1 = document.getElementById("buy1");
+        let buy2 = document.getElementById("buy2");
+
+        buy1.addEventListener("click", () => {
+           tg.close();
         });
-    </script>
 
+        buy2.addEventListener("click", () => {
+           tg.close();
+        });
+
+        // Проверка, что переменные темы загружены
+        console.log('Telegram theme:', tg.themeParams);
+        document.body.style.color = tg.themeParams.text_color;
+        document.body.style.backgroundColor = tg.themeParams.bg_color;
+    </script>
 </body>
 </html>
