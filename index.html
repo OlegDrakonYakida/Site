@@ -108,6 +108,7 @@
         let buy2 = document.getElementById("buy2");
 
         buy1.addEventListener("click", () => {
+           tg.sendData(JSON.stringify({ action: "buy", item: "Snow Cat" }));
            tg.close();
         });
 
