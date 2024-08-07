@@ -3,113 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <title>WonderLandUkraineBot</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 200;
-            color: var(--tg-theme-text-color, black); /* Цвет по умолчанию */
-            background: var(--tg-theme-bg-color, white); /* Цвет по умолчанию */
-        }
-
-        #main {
-            width: 100%;
-            padding: 20px;
-            text-align: center;
-        }
-
-        h1 {
-            margin-top: 50px;
-            margin-bottom: 10px;
-        }
-
-        p {
-            width: 350px;
-            margin: 0 auto;
-        }
-
-        .grid-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px; /* Уменьшил расстояние между столбцами */
-            flex-wrap: wrap; /* Добавил, чтобы столбцы могли переноситься на новую строку */
-            margin-top: 30px;
-        }
-
-        .content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 45%; /* Установил ширину для контейнера, чтобы уменьшить ширину столбцов */
-        }
-
-        img {
-            border: none;
-            border-radius: 25% 10%;
-            width: 160px;
-            margin: 0px auto;
-            opacity: 0.7;
-        }        
-
-        button {
-            border: 0;
-            border-radius: 5px;
-            margin-top: 15px;
-            height: 45px;
-            width: 100px; /* Уменьшил ширину кнопки */
-            font-size: 20px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 500ms ease;
-            color: var(--tg-theme-button-color, white); /* Цвет по умолчанию */
-            background: var(--tg-theme-button-text-color, black); /* Цвет по умолчанию */
-        }
-        button:hover {
-            background: var(--tg-theme-secondary-bg-color, grey); /* Цвет по умолчанию */
-        }
-
-    </style>
 </head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 200;
+        color: var(--tg-theme-text-color);
+        background: var(--tg-theme-bg-color);
+    }
+
+    #main {
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    h1 {
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+    img {
+        border: none;
+        border-radius: 25% 10%;
+        width: 160px;
+        margin: 30px auto;
+    }
+
+    p {
+        width: 350px;
+        margin: 0 auto;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Автоматическое заполнение колонок */
+        gap: 20px; /* Отступы между элементами */
+        justify-items: center; /* Центрирование элементов внутри колонок */
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    button {
+        border: 0;
+        border-radius: 5px;
+        margin-top: 0px;
+        height: 60px;
+        width: 200px;
+        font-size: 20px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 500ms ease;
+        color: var(--tg-theme-button-color);
+        background: var(--tg-theme-button-text-color);
+    }
+    button:hover {
+        background: var(--tg-theme-secondary-bg-color);
+    }
+
+</style>
+
 <body>
     <div id="main">
       <h1>Welcome to WonderLandStore!</h1>
       <p>Using our web application, you can view our products!</p>
-      <div class="grid-container">
-        <div class="content">
-          <img name="Snow Cat" src="Кошка.jpg" alt="Snow Cat">
-          <button id="buy1">Buy</button>
+        <div class="grid-container">
+            <div class="content">
+                <img name="Snow Cat" src=Кошка.jpg>
+                <button id="buy">Buy</button>
+            </div>
+            <div class="content">
+                <img name="Home" src="Обложка.jpg">
+                <button id="buy2">Buy</button>
+            </div>
+            <div class="content">
+                <img name="Canva" src="Canva.jpg">
+                <button id="buy3">Buy</button>
+            </div>
         </div>
-        <div class="content">
-          <img name="Home" src="Обложка.jpg" alt="Home">
-          <button id="buy2">Buy</button>
-        </div>
-      </div>
     </div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         let tg = window.Telegram.WebApp;
-        
-        // Инициализация WebApp
-        tg.ready(); 
-        
         tg.expand(); // Пытается развернуть Web App для проверки
 
         let buy1 = document.getElementById("buy1");
         let buy2 = document.getElementById("buy2");
 
         buy1.addEventListener("click", () => {
-           tg.sendData(JSON.stringify({ action: "buy", item: "Snow Cat" }));
            tg.close();
         });
 
         buy2.addEventListener("click", () => {
-           tg.sendData(JSON.stringify({ action: "buy", item: "Gingerbread House" }));
+           tg.close();
+        });
+
+        buy3.addEventListener("click", () => {
            tg.close();
         });
 
@@ -118,5 +119,6 @@
         document.body.style.color = tg.themeParams.text_color;
         document.body.style.backgroundColor = tg.themeParams.bg_color;
     </script>
+
 </body>
 </html>
