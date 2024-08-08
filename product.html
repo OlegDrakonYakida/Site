@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Page</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            padding: 20px;
+            color: var(--tg-theme-text-color);
+            background: var(--tg-theme-bg-color);
+            background-color: #f4f4f4;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto 1fr auto;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-title {
+            grid-column: 1 / 3;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-image {
+            grid-row: 2 / 3;
+            width: 100%;
+            max-width: 300px;
+            justify-self: start;
+        }
+
+        .product-info {
+            grid-row: 2 / 3;
+            justify-self: end;
+            text-align: right;
+        }
+
+        .product-price {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            color: var(--tg-theme-button-color, white);
+            background: var(--tg-theme-button-text-color, black);
+        }
+
+        .buy-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--tg-theme-button-color, white);
+            background: var(--tg-theme-button-text-color, black);
+        }
+
+        a:hover {
+            background: var(--tg-theme-secondary-bg-color, grey);
+        }
+
+        img {
+            border: none;
+            border-radius: 25% 10%;
+            width: 160px;
+            margin: 10px auto;
+        }
+
+        .product-description {
+            grid-column: 1 / 3;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<a href="Store.html" class="back-button">← Back to Products</a>
+
+<div class="product-container">
+    <div class="product-title" id="product-title">Product Name</div>
+    <img src="" alt="Product Image" class="product-image" id="product-image">
+    <div class="product-info">
+        <div class="product-price" id="product-price">$100</div>
+        <a href="#" class="buy-button">Buy Now</a>
+    </div>
+    <div class="product-description" id="product-description">
+        This is the product description. It will be dynamically updated based on the selected product.
+    </div>
+</div>
+
+<script>
+    // Объект с данными о товарах
+    const products = {
+        cat: {
+            title: "Snow Cat",
+            image: "Кошка.jpg",
+            description: "This is a lovely snow cat.",
+            price: "$20"
+        },
+        home: {
+            title: "Snow Home",
+            image: "Обложка.jpg",
+            description: "This is a beautiful snow home.",
+            price: "$30"
+        },
+        canva: {
+            title: "Canva",
+            image: "Canva.jpg",
+            description: "This is a canva.",
+            price: "$40"
+        }
+    };
+
+    // Функция для получения параметра из URL
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // Получаем выбранный товар из URL
+    const selectedProduct = getQueryParam('product');
+
+    // Если товар существует в объекте, подставляем данные
+    if (products[selectedProduct]) {
+        document.getElementById('product-title').textContent = products[selectedProduct].title;
+        document.getElementById('product-image').src = products[selectedProduct].image;
+        document.getElementById('product-description').textContent = products[selectedProduct].description;
+        document.getElementById('product-price').textContent = `Price: ${products[selectedProduct].price}`;
+    } else {
+        document.getElementById('product-title').textContent = "Product not found";
+    }
+</script>
+
+</body>
+</html>
