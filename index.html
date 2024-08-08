@@ -25,6 +25,12 @@
         text-align: center;
     }
 
+    .ex {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
     h1 {
         margin-top: 50px;
         margin-bottom: 10px;
@@ -61,58 +67,45 @@
         border-radius: 5px;
         margin-top: 0px;
         height: 60px;
-        width: 160px;
+        width: 200px;
         font-size: 20px;
         font-weight: 500;
         cursor: pointer;
         transition: all 500ms ease;
-        color: var(--tg-theme-button-color);
-        background: var(--tg-theme-button-text-color);
+        color: var(--tg-theme-button-color, white);
+        background: var(--tg-theme-button-text-color, black);
     }
     button:hover {
-        background: var(--tg-theme-secondary-bg-color);
+        background: var(--tg-theme-secondary-bg-color, grey);
     }
 
 </style>
 
 <body>
     <div id="main">
-      <h1>Welcome to WonderLandStore!</h1>
-      <p>Using our web application, you can view our products!</p>
-        <div class="grid-container">
-            <div class="content">
-                <img name="Snow Cat" src=Кошка.jpg>
-                <button id="buy">Buy</button>
+      <div class="ex">
+        <h1>Welcome to WonderLandStore!</h1>
+        <p>Using our web application, you can view our products!</p>
+            <div class="grid-container">
+                <div class="content">
+                    <img name="Snow Cat" src=Кошка.jpg>
+                    <a href="product.html?product=cat"><button id="buy1">Buy</button></a>
+                </div>
+                <div class="content">
+                    <img name="Home" src="Обложка.jpg">
+                    <a href="product.html?product=home"><button id="buy2">Buy</button></a>
+                </div>
+                <div class="content">
+                    <img name="Canva" src="Canva.jpg">
+                    <a href="product.html?product=canva"><button id="buy3">Buy</button></a>
+                </div>
             </div>
-            <div class="content">
-                <img name="Home" src="Обложка.jpg">
-                <button id="buy2">Buy</button>
-            </div>
-            <div class="content">
-                <img name="Canva" src="Canva.jpg">
-                <button id="buy3">Buy</button>
-            </div>
-        </div>
+      </div>
     </div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         let tg = window.Telegram.WebApp;
         tg.expand(); // Пытается развернуть Web App для проверки
-
-        let buy1 = document.getElementById("buy1");
-        let buy2 = document.getElementById("buy2");
-
-        buy1.addEventListener("click", () => {
-           tg.close();
-        });
-
-        buy2.addEventListener("click", () => {
-           tg.close();
-        });
-
-        buy3.addEventListener("click", () => {
-           tg.close();
-        });
 
         // Проверка, что переменные темы загружены
         console.log('Telegram theme:', tg.themeParams);
